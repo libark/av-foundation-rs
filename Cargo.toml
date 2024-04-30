@@ -1,0 +1,40 @@
+[package]
+name = "av-foundation"
+description = "Bindings to AVFoundation framework"
+homepage = "https://github.com/libark/av-foundation"
+repository = "https://github.com/libark/av-foundation"
+documentation = "https://docs.rs/av-foundation"
+version = "0.1.2"
+authors = ["Zhou Wei <zhouwei@ehom.net>"]
+license = "MIT OR Apache-2.0"
+categories = ["multimedia::video", "os::macos-apis"]
+keywords = ["avfoundation", "camera", "capture"]
+edition = "2018"
+
+[dependencies]
+core-foundation = "0.9"
+core-media = { version = "0.2", features = ["objc"] }
+core-video = { version = "0.2", features = ["objc"] }
+dispatch2 = "0.1"
+libc = "0.2"
+objc2 = "0.5"
+objc2-foundation = { version = "0.2", features = ["NSArray", "NSDictionary", "NSError", "NSValue", "NSString"] }
+
+[features]
+default = ["capture", "link"]
+audio = []
+capture = []
+editing = []
+link = ["core-foundation/link", "core-media/link", "core-video/link"]
+playback = []
+
+[package.metadata.docs.rs]
+no-default-features = true
+features = ["capture"]
+default-target = "x86_64-apple-darwin"
+targets = [
+    "aarch64-apple-darwin",
+    "aarch64-apple-ios",
+    "x86_64-apple-darwin",
+    "x86_64-apple-ios",
+]
