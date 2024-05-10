@@ -108,24 +108,40 @@ impl AVCaptureDevice {
         unsafe { msg_send_id![self, formats] }
     }
 
-    pub fn active_format(&self) -> Id<AVCaptureDeviceFormat> {
+    pub fn get_active_format(&self) -> Id<AVCaptureDeviceFormat> {
         unsafe { msg_send_id![self, activeFormat] }
     }
 
-    pub fn active_video_min_frame_duration(&self) -> CMTime {
+    pub fn set_active_format(&self, format: &AVCaptureDeviceFormat) {
+        unsafe { msg_send![self, setActiveFormat: format] }
+    }
+
+    pub fn get_active_video_min_frame_duration(&self) -> CMTime {
         unsafe { msg_send![self, activeVideoMinFrameDuration] }
     }
 
-    pub fn active_video_max_frame_duration(&self) -> CMTime {
+    pub fn set_active_video_min_frame_duration(&self, duration: CMTime) {
+        unsafe { msg_send![self, setActiveVideoMinFrameDuration: duration] }
+    }
+
+    pub fn get_active_video_max_frame_duration(&self) -> CMTime {
         unsafe { msg_send![self, activeVideoMaxFrameDuration] }
+    }
+
+    pub fn set_active_video_max_frame_duration(&self, duration: CMTime) {
+        unsafe { msg_send![self, setActiveVideoMaxFrameDuration: duration] }
     }
 
     pub fn input_sources(&self) -> Id<NSArray<AVCaptureDeviceInputSource>> {
         unsafe { msg_send_id![self, inputSources] }
     }
 
-    pub fn active_input_source(&self) -> Id<AVCaptureDeviceInputSource> {
+    pub fn get_active_input_source(&self) -> Id<AVCaptureDeviceInputSource> {
         unsafe { msg_send_id![self, activeInputSource] }
+    }
+
+    pub fn set_active_input_source(&self, input_source: &AVCaptureDeviceInputSource) {
+        unsafe { msg_send![self, setActiveInputSource: input_source] }
     }
 }
 
