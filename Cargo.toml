@@ -18,7 +18,7 @@ core-video = { version = "0.3", default-features = false, features = ["objc"] }
 dispatch2 = "0.1"
 libc = "0.2"
 objc2 = "0.5"
-objc2-foundation = { version = "0.2", features = ["NSArray", "NSDictionary", "NSError", "NSValue", "NSString"] }
+objc2-foundation = { version = "0.2", features = ["NSArray", "NSDictionary", "NSError", "NSString", "NSValue"] }
 
 [features]
 default = ["capture", "link"]
@@ -27,6 +27,9 @@ capture = []
 editing = []
 link = ["core-foundation/link", "core-media/link", "core-video/link"]
 playback = []
+
+[[example]]
+name = "video_capture"
 
 [package.metadata.docs.rs]
 no-default-features = true
